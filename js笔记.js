@@ -343,3 +343,5 @@ greetobj.smile = "haha";
 
 //调用时,是会显示对应的属性值的;
 console.log(greetobj.smile); //"haha"
+
+//但上面这种扩充一个基本类型值的方法很少用到,所以创建基本类型值时用字面量法即可;
