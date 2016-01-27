@@ -285,7 +285,19 @@ var re = new RegExp("\\\\", "gm");
 /**************************************************/
 /*
  * 基本值类型包装器
- * JavaScript有五个基本的值类型:数字,字符串,布尔,null和undefined.
+ * JavaScript有五个基本的值类型:
+ * 1.数字,2.字符串,3.布尔,4.null,5.undefined.
  * 除了null和undefined外,另外三种具有所谓的基本包装对象(primitive wrapper object).
  * 可以使用内置的构造函数Number(),String(),Boolean()来创建对象.
+ * 基本(primitive)数字和数字对象(object)之间的差异
+ * 如下:
  */
+//一个基本数字
+var n = 100;
+console.log(typeof n);//"number"
+
+var nobj = new Number(100);
+console.log(typeof nobj);//"object"
+
+console.log(n === nobj);//false
+
