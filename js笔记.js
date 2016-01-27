@@ -301,3 +301,45 @@ console.log(typeof nobj);//"object"
 
 console.log(n === nobj);//false
 
+/*
+ * 包装对象包含了一些方法和属性,比如说数字对象的toFixed()等;
+ * 这是使用构造函数来创建对象的一个理由,
+ * 然而事实上,在基本值类型上,也能够起作用,就是说,如果,你对某个基本对象调用了这些方法,基本值类型
+ * 就可以在后台被临时转换成一个对象
+ * 如下:
+ */
+//用来作为对象的基本字符串
+var str = "hello";
+console.log(str.toUpperCase()); //"HELLO"
+
+//值本身可以作为一个对象
+"monkey".slice(3, 6);//"key"
+
+//一个计算的数值也可以使用数值对象的方法
+(22 / 7).toPrecision(3);//"3.14"
+
+/* 所以一般情况下,我们使用字面量法来创建基本值类型即可
+ * 但如果你真的需要持久保存状态的需要,则你会需要一个包装对象,使用构造函数来创建一个基本对象;
+ * 如下:
+ */
+
+//基本字符串
+var greet = "Hello World!";
+
+//在使用split()方法,这时,greet从基本类型转换成对象
+greet.split(" ")[0];//"Hello"
+
+//为greet这个基本类型添加一个属性,这样是不会报错的
+greet.smile = "haha";
+
+//但如果调用这个属性时,则会显示undefined,因为greet是一个基本类型,并不是对象
+console.log(greet.smile);//undefined;
+
+//创建一个字符串对象;
+var greetobj = new String("Hello World!");
+
+//为greetobj添加一个属性;
+greetobj.smile = "haha";
+
+//调用时,是会显示对应的属性值的;
+console.log(greetobj.smile); //"haha"
