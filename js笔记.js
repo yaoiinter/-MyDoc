@@ -372,3 +372,21 @@ console.log(greetobj.smile); //"haha"
  * 第一个:函数是第一类对象?(first-class object);
  * 第二个:他们能够提供作用域;
  */
+//函数表达式(unnamed),常见的被称为匿名函数(annoymouse function),如下:
+//匿名函数存在一个问题,就是该函数对象的name属性为空,这个在递归时是比较有用的.
+var add = function(a,b){
+	return a+b;
+};
+console.log(add.name); //空字符串(firebug/chrome);
+
+//命名函数表达式
+var add = function add(a,b){
+	return a + b;
+};
+console.log(add.name); //add;
+
+//函数声明(function declaration)
+function add(a,b){
+	return a + b;
+}
+console.log(add.name); //add;
