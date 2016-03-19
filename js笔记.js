@@ -390,3 +390,39 @@ function add(a,b){
 	return a + b;
 }
 console.log(add.name); //add;
+
+
+/*
+ * 函数的提升
+ * 在函数体的任何位置定义变量,都会在后台被提升到函数顶部;
+ */
+//使用函数声明定义全局函数
+function foo(){
+	alert("global foo");
+}
+
+function bar(){
+	alert("global bar");
+}
+
+function hoistMe(){
+	//在hoistMe函数中定义的foo和bar,虽然是在console后才定义的,但他们被提升到了函数体内的顶部,覆盖了定义的全局对象(函数)foo和bar
+	//不同的函数定义方式,所达到的提升效果不同;
+	//foo和bar的区别在与,因为使用函数定义方式不同,使用"函数声明"方式定义的函数,不管是"声明"还是"定义",均被提升到函数体的顶部;
+	//而,bar使用"函数表达式"的方式定义的,仅仅提升了"声明",而其对应的具体的"定义"并没有被提升(console.log时只打印出了undefined)
+	console.log(typeof foo);//function
+	console.log(typeof bar);//undefined
+
+	foo();//alert("local foo"); 因为声明和定义都提升了,并覆盖了全局声明的对象(函数);
+	bar();//TypeError: bar is not a function;因为是使用了函数表达式的方式定义的函数,所以仅仅提升了对象的声明,而并没有定义
+
+	function foo(){
+		alert("local foo");
+	}
+
+	var bar = function(){
+		alert("local bar");
+	}
+}
+
+hoistMe();
